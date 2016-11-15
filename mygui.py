@@ -13,12 +13,40 @@ class Window(QtGui.QMainWindow):
         extractAction.setStatusTip("Leave the app")
         extractAction.triggered.connect(self.close_application)
 
+        openeditor = QtGui.QAction("&Editor",self)
+        openeditor.setShortcut("Ctrl+E")
+        openeditor.setStatusTip("Open the editor")
+        openeditor.triggered.connect(self.editor)
+
+
+
+        openfile = QtGui.QAction("&Open File",self)
+        openfile.setShortcut("Ctrl+O")
+        openfile.setStatusTip("Open File")
+        openfile.triggered.connect(self.open_file)
+        
+
+        
+        savefile = QtGui.QAction("&Save File",self)
+        savefile.setShortcut("Ctrl+S")
+        savefile.setStatusTip("Save File")
+        savefile.triggered.connect(self.save_file)
+        
+
+
         self.statusBar()
         
         mainMenu = self.menuBar()
         fileMenu = mainMenu.addMenu('&FILE')
         fileMenu.addAction(extractAction)
+        fileMenu.addAction(openfile)
+        fileMenu.addAction(savefile)
 
+
+        editorMenu = mainMenu.addMenu('&Editor')
+        editorMenu.addAction(openeditor)
+
+        
 
         self.home()
 
@@ -83,9 +111,35 @@ class Window(QtGui.QMainWindow):
 
         self.show()
 
+
+    def open_file(self):
+        name = QtGui.QFileDialog.getOpenFileName(self,'Open File')
+        file = open(name,'r')
+
+        self.editor()
+
+        with file:
+            text= file.read()
+            self.textEdit.setText(text)
+        
+    def save_file(self):
+        name = QtGui.QFileDialog.getSaveFileName(self,'Save File')
+        file = open(name,'w')
+        text = self.textEdit.toPlainText()
+        file.write(text)
+        file.close()
+        
+
+
     def color_picker(self):
         color = QtGui.QColorDialog.getColor()
         self.styleChoice.setStyleSheet("QWidget {background-color = %s }"% color.name())
+
+    def editor(self):
+        self.textEdit = QtGui.QTextEdit()
+
+        print "M here"
+        self.setCentralWidget(self.textEdit)
 
 
     def font_choice(self):
