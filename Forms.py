@@ -1,3 +1,4 @@
+import sys
 from PyQt4 import QtCore, QtGui
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -10,8 +11,8 @@ try:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig, _encoding)
 except AttributeError:
-        def _translate(context, text, disambig):
-            return QtGui.QApplication.translate(context, text, disambig)
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
 
 
 
@@ -23,6 +24,17 @@ class Phy_Frame(object):
         Frame.resize(736, 564)
         Frame.setFrameShape(QtGui.QFrame.StyledPanel)
         Frame.setFrameShadow(QtGui.QFrame.Raised)
+
+       
+
+        self.Save = QtGui.QPushButton(Frame)
+        self.Save.setGeometry(QtCore.QRect(0, 0, 85, 27))
+        self.Save.setObjectName(_fromUtf8("Save"))
+        self.Reset = QtGui.QPushButton(Frame)
+        self.Reset.setGeometry(QtCore.QRect(90, 0, 85, 27))
+        self.Reset.setObjectName(_fromUtf8("Reset"))
+
+
         self.gridLayout = QtGui.QGridLayout(Frame)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.a_reion = QtGui.QLabel(Frame)
@@ -115,7 +127,8 @@ class Phy_Frame(object):
         self.f_ek_2 = QtGui.QLineEdit(Frame)
         self.f_ek_2.setObjectName(_fromUtf8("f_ek_2"))
         self.gridLayout.addWidget(self.f_ek_2, 6, 3, 1, 1)
-        
+
+
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
 
@@ -137,7 +150,20 @@ class Phy_Frame(object):
         self.ndebris.setText(_translate("Frame", "ndebris = 1", None))
         self.f_ek.setText(_translate("Frame", "f_ek = 1", None))
 
+        self.Save.setStatusTip(_translate("Frame", "Save variables", None))
+        self.Save.setText(_translate("Frame", "Save", None))
+        self.Reset.setStatusTip(_translate("Frame", "Reset value", None))
+        self.Reset.setText(_translate("Frame", "Reset", None))
 
+
+
+
+    def close_application(self):
+        sys.exit()
+
+
+
+       
 
 class AMR_Frame(object):
     def setupUi(self, Frame):
@@ -145,6 +171,14 @@ class AMR_Frame(object):
         Frame.resize(637, 206)
         Frame.setFrameShape(QtGui.QFrame.StyledPanel)
         Frame.setFrameShadow(QtGui.QFrame.Raised)
+
+        self.Save = QtGui.QPushButton(Frame)
+        self.Save.setGeometry(QtCore.QRect(0, 0, 85, 27))
+        self.Save.setObjectName(_fromUtf8("Save"))
+        self.Reset = QtGui.QPushButton(Frame)
+        self.Reset.setGeometry(QtCore.QRect(90, 0, 85, 27))
+        self.Reset.setObjectName(_fromUtf8("Reset"))
+
         self.gridLayout = QtGui.QGridLayout(Frame)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.levelmin = QtGui.QLabel(Frame)
@@ -220,6 +254,11 @@ class AMR_Frame(object):
         self.boxlen.setText(_translate("Frame", "boxlen", None))
         self.editboxlen.setStatusTip(_translate("Frame", "edit boxlen", None))
 
+        self.Save.setStatusTip(_translate("Frame", "Save variables", None))
+        self.Save.setText(_translate("Frame", "Save", None))
+        self.Reset.setStatusTip(_translate("Frame", "Reset value", None))
+        self.Reset.setText(_translate("Frame", "Reset", None))
+
 
 
 
@@ -230,6 +269,15 @@ class Init_Frame(object):
         Frame.resize(561, 571)
         Frame.setFrameShape(QtGui.QFrame.StyledPanel)
         Frame.setFrameShadow(QtGui.QFrame.Raised)
+
+        self.Save = QtGui.QPushButton(Frame)
+        self.Save.setGeometry(QtCore.QRect(0, 0, 85, 27))
+        self.Save.setObjectName(_fromUtf8("Save"))
+        self.Reset = QtGui.QPushButton(Frame)
+        self.Reset.setGeometry(QtCore.QRect(90, 0, 85, 27))
+        self.Reset.setObjectName(_fromUtf8("Reset"))
+
+
         self.gridLayout = QtGui.QGridLayout(Frame)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.nregion = QtGui.QLabel(Frame)
@@ -377,6 +425,13 @@ class Init_Frame(object):
         self.p_region.setText(_translate("Frame", "p_region", None))
         self.editp_region.setStatusTip(_translate("Frame", "edit p_region", None))
 
+        self.Save.setStatusTip(_translate("Frame", "Save variables", None))
+        self.Save.setText(_translate("Frame", "Save", None))
+        self.Reset.setStatusTip(_translate("Frame", "Reset value", None))
+        self.Reset.setText(_translate("Frame", "Reset", None))
+
+
+
 
 
 
@@ -386,6 +441,15 @@ class Output_Frame(object):
         Frame.resize(625, 341)
         Frame.setFrameShape(QtGui.QFrame.StyledPanel)
         Frame.setFrameShadow(QtGui.QFrame.Raised)
+        
+        self.Save = QtGui.QPushButton(Frame)
+        self.Save.setGeometry(QtCore.QRect(0, 0, 85, 27))
+        self.Save.setObjectName(_fromUtf8("Save"))
+        self.Reset = QtGui.QPushButton(Frame)
+        self.Reset.setGeometry(QtCore.QRect(90, 0, 85, 27))
+        self.Reset.setObjectName(_fromUtf8("Reset"))
+
+
         self.gridLayout = QtGui.QGridLayout(Frame)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.tend = QtGui.QLabel(Frame)
@@ -461,6 +525,15 @@ class Output_Frame(object):
         self.foutput.setText(_translate("Frame", "foutput", None))
         self.editfoutput.setStatusTip(_translate("Frame", "edit foutput", None))
 
+        self.Save.setStatusTip(_translate("Frame", "Save variables", None))
+        self.Save.setText(_translate("Frame", "Save", None))
+        self.Reset.setStatusTip(_translate("Frame", "Reset value", None))
+        self.Reset.setText(_translate("Frame", "Reset", None))
+
+
+
+
+
 
 class Boundary_Frame(object):
     def setupUi(self, Frame):
@@ -468,6 +541,16 @@ class Boundary_Frame(object):
         Frame.resize(625, 617)
         Frame.setFrameShape(QtGui.QFrame.StyledPanel)
         Frame.setFrameShadow(QtGui.QFrame.Raised)
+        
+        self.Save = QtGui.QPushButton(Frame)
+        self.Save.setGeometry(QtCore.QRect(0, 0, 85, 27))
+        self.Save.setObjectName(_fromUtf8("Save"))
+        self.Reset = QtGui.QPushButton(Frame)
+        self.Reset.setGeometry(QtCore.QRect(90, 0, 85, 27))
+        self.Reset.setObjectName(_fromUtf8("Reset"))
+
+
+
         self.gridLayout = QtGui.QGridLayout(Frame)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.nboundary = QtGui.QLabel(Frame)
@@ -582,6 +665,12 @@ class Boundary_Frame(object):
         self.editkbound_max.setStatusTip(_translate("Frame", "edit kbound_max", None))
         self.p_bound.setText(_translate("Frame", "p_bound", None))
         self.editp_bound.setStatusTip(_translate("Frame", "edit p_bound", None))
+
+        self.Save.setStatusTip(_translate("Frame", "Save variables", None))
+        self.Save.setText(_translate("Frame", "Save", None))
+        self.Reset.setStatusTip(_translate("Frame", "Reset value", None))
+        self.Reset.setText(_translate("Frame", "Reset", None))
+
 
 
 
