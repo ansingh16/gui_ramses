@@ -74,3 +74,45 @@ class BoundaryPopupDialog(QtGui.QDialog):
         self.dialog.show()
         
 
+class GlobalPopupDialog(QtGui.QDialog):
+    def __init__(self, parent=None):
+        super(QtGui.QDialog,self).__init__()
+        self.setGeometry(150,150,600,500)
+
+        self.dialog = QtGui.QFrame()
+        ui = Forms.Global_Frame()
+        ui.setupUi(self.dialog)
+        self.dialog.show()
+        
+
+class HydroPopupDialog(QtGui.QDialog):
+    def __init__(self, parent=None):
+        super(QtGui.QDialog,self).__init__()
+        self.setGeometry(150,150,600,500)
+
+        self.dialog = QtGui.QFrame()
+        ui = Forms.Hydro_Frame()
+        ui.setupUi(self.dialog)
+        self.dialog.show()
+        
+class RefinePopupDialog(QtGui.QDialog):
+    def __init__(self, parent=None):
+        super(QtGui.QDialog,self).__init__()
+        self.setGeometry(150,150,600,500)
+
+        self.dialog = QtGui.QFrame()
+        ui = Forms.Refine_Frame()
+        ui.setupUi(self.dialog)
+        self.dialog.show()
+        
+class PoissonPopupDialog(QtGui.QDialog):
+    def __init__(self, parent=None):
+        super(QtGui.QDialog,self).__init__()
+        self.setGeometry(150,150,600,500)
+
+        self.dialog = QtGui.QFrame()
+        ui = Forms.Poisson_Frame()
+        ui.setupUi(self.dialog)
+        self.dialog.show()
+        
+

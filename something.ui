@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Frame</class>
- <widget class="QFrame" name="Frame">
+ <class>cosmo</class>
+ <widget class="QFrame" name="cosmo">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>625</width>
-    <height>617</height>
+    <width>548</width>
+    <height>278</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,214 +20,79 @@
    <enum>QFrame::Raised</enum>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="4" column="1">
-    <widget class="QLineEdit" name="editu_bound">
-     <property name="statusTip">
-      <string>edit u_bound</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="2">
-    <widget class="QLabel" name="ibound_max">
-     <property name="text">
-      <string>ibound_max</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="w_bound">
-     <property name="text">
-      <string>w_bound</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QLineEdit" name="editw_bound">
-     <property name="statusTip">
-      <string>edit w_bound</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="3">
-    <widget class="QLineEdit" name="editibound_min">
-     <property name="statusTip">
-      <string>edit ibound_min</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="nboundary">
+   <item row="0" column="0">
+    <widget class="QLabel" name="gravity_type">
      <property name="statusTip">
       <string/>
      </property>
      <property name="text">
-      <string>nboundary</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="editnboundary">
-     <property name="statusTip">
-      <string>edit nboundary</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="2">
-    <widget class="QLabel" name="kbound_min">
-     <property name="text">
-      <string>kbound_min</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="3">
-    <widget class="QLineEdit" name="editkbound_min">
-     <property name="statusTip">
-      <string>edit kbound_min</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="editbound_type">
-     <property name="statusTip">
-      <string>edit bound_type</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="u_bound">
-     <property name="text">
-      <string>u_bound</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QLineEdit" name="editd_bound">
-     <property name="statusTip">
-      <string>edit d_bound</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="p_bound">
-     <property name="text">
-      <string>p_bound</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="1">
-    <widget class="QLineEdit" name="editp_bound">
-     <property name="statusTip">
-      <string>edit p_bound</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2">
-    <widget class="QLabel" name="ibound_min">
-     <property name="text">
-      <string>ibound_min</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="bound_type">
-     <property name="text">
-      <string>bound_type</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="QLabel" name="jbound_min">
-     <property name="text">
-      <string>jbound_min</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="3">
-    <widget class="QLineEdit" name="editjbound_min">
-     <property name="statusTip">
-      <string>edit jbound_min</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="2">
-    <widget class="QLabel" name="jbound_max">
-     <property name="text">
-      <string>jbound_max</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="3">
-    <widget class="QLineEdit" name="editjbound_max">
-     <property name="statusTip">
-      <string>edit jbound_max</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="d_bound">
-     <property name="statusTip">
-      <string/>
-     </property>
-     <property name="text">
-      <string>d_bound</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="2">
-    <widget class="QLabel" name="kbound_max">
-     <property name="text">
-      <string>kbound_max</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="3">
-    <widget class="QLineEdit" name="editkbound_max">
-     <property name="statusTip">
-      <string>edit kbound_max</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="v_bound">
-     <property name="text">
-      <string>v_bound</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QLineEdit" name="editv_bound">
-     <property name="statusTip">
-      <string>edit v_bound</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="3">
-    <widget class="QLineEdit" name="editibound_max">
-     <property name="statusTip">
-      <string>edit ibound_max</string>
+      <string>gravity_type</string>
      </property>
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="QPushButton" name="Save">
+    <widget class="QLineEdit" name="editgravity_type">
      <property name="statusTip">
-      <string>Save the variables</string>
-     </property>
-     <property name="text">
-      <string>Save</string>
-     </property>
-     <property name="shortcut">
-      <string>Ctrl+S</string>
+      <string>edit gravity_type</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="3">
-    <widget class="QPushButton" name="Reset">
+   <item row="0" column="2">
+    <widget class="QLabel" name="cg_levelmin">
      <property name="text">
-      <string>Reset</string>
+      <string>cg_levelmin</string>
      </property>
-     <property name="shortcut">
-      <string>Ctrl+R</string>
+    </widget>
+   </item>
+   <item row="0" column="3" colspan="2">
+    <widget class="QLineEdit" name="editcg_levelmin">
+     <property name="statusTip">
+      <string>edit cg_levelmin</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="epsilon">
+     <property name="text">
+      <string>epsilon</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="editepsilon">
+     <property name="statusTip">
+      <string>edit epsilon</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" colspan="2">
+    <widget class="QLabel" name="cic_levelmax">
+     <property name="text">
+      <string>cic_levelmax</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="4">
+    <widget class="QLineEdit" name="editcic_levelmax">
+     <property name="statusTip">
+      <string>edit cic_levelmax</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="gravity_params">
+     <property name="statusTip">
+      <string/>
+     </property>
+     <property name="text">
+      <string>gravity_params</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="editgravity_params">
+     <property name="statusTip">
+      <string>edit gravity_params</string>
      </property>
     </widget>
    </item>

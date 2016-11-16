@@ -1,20 +1,13 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'RamsesGui.ui'
+# Form implementation generated from reading ui file 'RamsesGuiNew.ui'
 #
-# Created: Mon Nov 14 16:49:13 2016
+# Created: Wed Nov 16 14:53:08 2016
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
-from PyQt4.QtGui import QImage
-
-import sys
-
-import Forms
-import popup 
-
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -29,10 +22,6 @@ try:
 except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
-
-
- 
-
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -135,19 +124,6 @@ class Ui_MainWindow(object):
         self.menuFile.addAction(self.actionSave)
         self.menubar.addAction(self.menuFile.menuAction())
 
-        #editing for a pop-up menu
-
-        self.EditPhy.clicked.connect(self.Phys_pop)
-        self.EditAMR.clicked.connect(self.AMR_pop)
-        self.EditInit.clicked.connect(self.Init_pop)
-        self.EditOut.clicked.connect(self.Out_pop)
-        self.EditBound.clicked.connect(self.Boundary_pop)
-        self.EditGlobal.clicked.connect(self.Global_pop)
-        self.EditHydro.clicked.connect(self.Hydro_pop)
-        self.EditRefine.clicked.connect(self.Refine_pop)
-        self.EditPoisson.clicked.connect(self.Poisson_pop)
-        
-
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -183,7 +159,7 @@ class Ui_MainWindow(object):
         self.EditBound.setStatusTip(_translate("MainWindow", "Edit Bounday Parameters", None))
         self.EditBound.setText(_translate("MainWindow", "Edit", None))
         self.Boundary.setText(_translate("MainWindow", "Bounday Condition Parameters", None))
-        self.Namelist.setText(_translate("MainWindow", "Namelist Directory", None))
+        self.Namelist.setText(_translate("MainWindow", "Namelist Didirectory", None))
         self.ChooseNameFile.setText(_translate("MainWindow", "File", None))
         self.menuFile.setTitle(_translate("MainWindow", "File", None))
         self.actionEdir.setText(_translate("MainWindow", "Edir", None))
@@ -193,47 +169,12 @@ class Ui_MainWindow(object):
         self.actionSave.setShortcut(_translate("MainWindow", "Ctrl+S", None))
 
 
-    def Phys_pop(self):
-        self.dialog = popup.PhyPopupDialog()
-    def AMR_pop(self):
-        self.dialog = popup.AMRPopupDialog()
-    def Init_pop(self):
-        self.dialog = popup.InitPopupDialog()
-    def Out_pop(self):
-        self.dialog = popup.OutputPopupDialog()
-    def Boundary_pop(self):
-        self.dialog = popup.BoundaryPopupDialog()
-    def Global_pop(self):
-        self.dialog = popup.GlobalPopupDialog()
-    def Hydro_pop(self):
-        self.dialog = popup.HydroPopupDialog()
-    def Refine_pop(self):
-        self.dialog = popup.RefinePopupDialog()
-    def Poisson_pop(self):
-        self.dialog = popup.PoissonPopupDialog()
-    
-    
-    
-    
-    
-
-    
-    
 if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
     MainWindow = QtGui.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
-    """
-    palette = QtGui.QPalette()
-    palette.setBrush(QPalette.Background,QBrush(QPixmap("result.jpg")))
-    MainWindow.setPalette(palette)
-    """
-   # MainWindow.setStyleSheet(" background-image: url(./result.jpg);")
-
-   
-    MainWindow.setWindowTitle("RamsesGui")
     MainWindow.show()
     sys.exit(app.exec_())
 
