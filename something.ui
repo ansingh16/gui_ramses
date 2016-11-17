@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>548</width>
-    <height>278</height>
+    <width>833</width>
+    <height>559</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,78 +21,292 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QLabel" name="gravity_type">
+    <widget class="QLabel" name="cooling">
      <property name="statusTip">
       <string/>
      </property>
      <property name="text">
-      <string>gravity_type</string>
+      <string>cooling</string>
      </property>
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="QLineEdit" name="editgravity_type">
+    <widget class="QLineEdit" name="editcooling">
      <property name="statusTip">
-      <string>edit gravity_type</string>
+      <string>edit cooling</string>
      </property>
     </widget>
    </item>
    <item row="0" column="2">
-    <widget class="QLabel" name="cg_levelmin">
+    <widget class="QLabel" name="a_spec">
      <property name="text">
-      <string>cg_levelmin</string>
+      <string>a_spec</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="3" colspan="2">
-    <widget class="QLineEdit" name="editcg_levelmin">
+   <item row="0" column="3">
+    <widget class="QLineEdit" name="edita_spec">
      <property name="statusTip">
-      <string>edit cg_levelmin</string>
+      <string>edit a_spec</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="4">
+    <widget class="QLabel" name="n_star">
+     <property name="text">
+      <string>n_star</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="5">
+    <widget class="QLineEdit" name="editn_star">
+     <property name="statusTip">
+      <string>edit n_star</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QLabel" name="epsilon">
+    <widget class="QLabel" name="isothermal">
      <property name="text">
-      <string>epsilon</string>
+      <string>isothermal</string>
      </property>
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="QLineEdit" name="editepsilon">
+    <widget class="QLineEdit" name="editisothermal">
      <property name="statusTip">
-      <string>edit epsilon</string>
+      <string>edit isothermal</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="2" colspan="2">
-    <widget class="QLabel" name="cic_levelmax">
+   <item row="1" column="2">
+    <widget class="QLabel" name="z_reion">
      <property name="text">
-      <string>cic_levelmax</string>
+      <string>z_reion</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QLineEdit" name="editreion">
+     <property name="statusTip">
+      <string>edit reion</string>
      </property>
     </widget>
    </item>
    <item row="1" column="4">
-    <widget class="QLineEdit" name="editcic_levelmax">
+    <widget class="QLabel" name="del_star">
+     <property name="text">
+      <string>del_star</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="5">
+    <widget class="QLineEdit" name="editdel_star">
      <property name="statusTip">
-      <string>edit cic_levelmax</string>
+      <string>edit del_star</string>
      </property>
     </widget>
    </item>
    <item row="2" column="0">
-    <widget class="QLabel" name="gravity_params">
+    <widget class="QLabel" name="metal">
      <property name="statusTip">
       <string/>
      </property>
      <property name="text">
-      <string>gravity_params</string>
+      <string>metal</string>
      </property>
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="QLineEdit" name="editgravity_params">
+    <widget class="QLineEdit" name="editmetal">
      <property name="statusTip">
-      <string>edit gravity_params</string>
+      <string>edit metal</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QLabel" name="z_ave">
+     <property name="text">
+      <string>z_ave</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3">
+    <widget class="QLineEdit" name="editz_ave">
+     <property name="statusTip">
+      <string>edit z_ave</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="4">
+    <widget class="QLabel" name="T2_star">
+     <property name="text">
+      <string>T2_star</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="5">
+    <widget class="QLineEdit" name="editT2_star">
+     <property name="statusTip">
+      <string>edit T2_star</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="haardt_madau">
+     <property name="text">
+      <string>haardt_madau</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="edithaardt_madau">
+     <property name="statusTip">
+      <string>edit haardt_madau</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QLabel" name="t_star">
+     <property name="text">
+      <string>t_star </string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="3">
+    <widget class="QLineEdit" name="editt_star">
+     <property name="statusTip">
+      <string>edit t_star</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="4">
+    <widget class="QLabel" name="g_star">
+     <property name="text">
+      <string>g_star</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="5">
+    <widget class="QLineEdit" name="editg_star">
+     <property name="statusTip">
+      <string>edit g_star</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="J21">
+     <property name="text">
+      <string>J21</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="editJ21">
+     <property name="statusTip">
+      <string>edit J21</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2">
+    <widget class="QLabel" name="eps_star">
+     <property name="text">
+      <string>eps_star</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="3">
+    <widget class="QLineEdit" name="editeps_star">
+     <property name="statusTip">
+      <string>edit eps_star</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="4">
+    <widget class="QLabel" name="eta_sn">
+     <property name="text">
+      <string>eta_sn</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="5">
+    <widget class="QLineEdit" name="editeta_sn">
+     <property name="statusTip">
+      <string>edit eta_sn</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="ndebris">
+     <property name="text">
+      <string>ndebris</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QLineEdit" name="editndebris">
+     <property name="statusTip">
+      <string>edit ndebris</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2">
+    <widget class="QLabel" name="f_w">
+     <property name="text">
+      <string>f_w</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="3">
+    <widget class="QLineEdit" name="editf_w">
+     <property name="statusTip">
+      <string>edit f_w</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="4">
+    <widget class="QLabel" name="yield">
+     <property name="text">
+      <string>yield</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="5">
+    <widget class="QLineEdit" name="edityield">
+     <property name="statusTip">
+      <string>edit yield</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>f_ek
+</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QLineEdit" name="editf_ek">
+     <property name="statusTip">
+      <string>edit f_ek</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="2">
+    <widget class="QLabel" name="r_bubble">
+     <property name="statusTip">
+      <string/>
+     </property>
+     <property name="text">
+      <string>r_bubble</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="3">
+    <widget class="QLineEdit" name="editr_bubble">
+     <property name="statusTip">
+      <string>edit r_bubble</string>
      </property>
     </widget>
    </item>
