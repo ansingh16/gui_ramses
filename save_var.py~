@@ -1,0 +1,15 @@
+from PyQt4 import QtCore, QtGui
+from PyQt4.QtGui import QImage
+import Forms
+import sys
+import popup
+
+
+class saving_variable(self):
+     
+    def __init__(self):
+         self.saving()
+
+
+    def saving(self):
+        sys.exit

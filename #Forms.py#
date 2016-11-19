@@ -19,7 +19,7 @@ except AttributeError:
 
 
 class Phy_Frame(object):
-    def setupUi(self, cosmo):
+    def __init__(self, cosmo):
         cosmo.setObjectName(_fromUtf8("cosmo"))
         cosmo.resize(833, 559)
         cosmo.setFrameShape(QtGui.QFrame.StyledPanel)
@@ -220,13 +220,16 @@ class Phy_Frame(object):
         self.Reset.setText(_translate("Frame", "Reset", None))
 
 
+    def get_values(self):
+        sys.exit()
+
 
 
 
 class AMR_Frame(object):
     def setupUi(self, Frame):
         Frame.setObjectName(_fromUtf8("Frame"))
-        Frame.resize(637, 320)
+        Frame.resize(637, 206)
         Frame.setFrameShape(QtGui.QFrame.StyledPanel)
         Frame.setFrameShadow(QtGui.QFrame.Raised)
 

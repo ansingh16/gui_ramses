@@ -214,9 +214,7 @@ class Ui_MainWindow(object):
     
     
     
-    
-    
-
+  
     
     
 if __name__ == "__main__":

@@ -170,7 +170,6 @@ class Window(QtGui.QMainWindow):
 
         
 
-
     def close_application(self):
         
         choice = QtGui.QMessageBox.question(self,'extract!!',"do you wanna exit?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
