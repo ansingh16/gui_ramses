@@ -4,7 +4,7 @@ import Forms
 import sys
 
 
-fp = open('test.nml','w')
+fp = open('RAMSES_GUI.nml','w')
 
 
 try:
@@ -28,13 +28,14 @@ class PhyPopupDialog(QtGui.QDialog):
     def __init__(self):
         super(QtGui.QDialog,self).__init__()
         self.setGeometry(150,150,600,500)
-        self.dialog = QtGui.QFrame()
-        self.ui = Forms.Phy_Frame()
+        self.dialog = QtGui.QDialog()
+        self.ui = Forms.Phy_Dialog()
         self.ui.setupUi(self.dialog)
-        self.dialog.show()
         self.ui.Save.clicked.connect(self.saving)
         self.ui.Reset.clicked.connect(self.resetting)
+        self.dialog.show()
 
+       
 
     def saving(self):
         choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna save?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
@@ -66,12 +67,12 @@ class PhyPopupDialog(QtGui.QDialog):
             
             for line in textlist:
                 print >>fp,line
-            fp.close()
-            self.accept
-        
+            #fp.close()
+            self.dialog.close()
+                
         else:
             pass
-    
+            
     def resetting(self):
         choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna reset?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
         
@@ -99,6 +100,7 @@ class PhyPopupDialog(QtGui.QDialog):
         else :
             pass
 
+   
             
         
        
@@ -107,19 +109,21 @@ class AMRPopupDialog(QtGui.QDialog):
         super(QtGui.QDialog,self).__init__()
         self.setGeometry(150,150,600,500)
 
-        self.dialog = QtGui.QFrame()
-        self.ui = Forms.AMR_Frame()
+        self.dialog = QtGui.QDialog()
+        self.ui = Forms.AMR_Dialog()
         self.ui.setupUi(self.dialog)
-        self.dialog.show()
+        
         self.ui.Save.clicked.connect(self.saving)
         self.ui.Reset.clicked.connect(self.resetting)
 
+        self.dialog.show()
 
     def saving(self):
         choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna save?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
         if (choice == QtGui.QMessageBox.Yes):
             print "Saving AMR Parameters"
             textlist = []
+            textlist.append('&AMR_PARAMS')
             textlist.append(self.ui.editlevelmin.text()) 
             textlist.append(self.ui.editngridtot.text()) 
             textlist.append(self.ui.editlevelmax.text())
@@ -130,11 +134,12 @@ class AMRPopupDialog(QtGui.QDialog):
             textlist.append(self.ui.editboxlen.text())  
             for line in textlist:
                 print >>fp,line
-            fp.close()
-        
+            #fp.close()
+            self.dialog.close()
+                
         else:
             pass
-    
+            
     def resetting(self):
         choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna reset?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
         
@@ -158,74 +163,434 @@ class InitPopupDialog(QtGui.QDialog):
         super(QtGui.QDialog,self).__init__()
         self.setGeometry(150,150,600,500)
 
-        self.dialog = QtGui.QFrame()
-        ui = Forms.Init_Frame()
-        ui.setupUi(self.dialog)
+        self.dialog = QtGui.QDialog()
+        self.ui = Forms.Init_Dialog()
+        self.ui.setupUi(self.dialog)
+        self.ui.Save.clicked.connect(self.saving)
+        self.ui.Reset.clicked.connect(self.resetting)
         self.dialog.show()
         
+
+    def saving(self):
+        choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna save?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        if (choice == QtGui.QMessageBox.Yes):
+            print "Saving INIT Parameters"
+            textlist = []
+            textlist.append('&INIT_PARAMS')
+            textlist.append('nregion= ' + self.ui.editnregion.text())
+            textlist.append('length_x= ' + self.ui.editlength_x.text())
+            textlist.append( 'region_type= ' + self.ui.editregion_type.text())
+            textlist.append( 'length_y= ' + self.ui.editlength_y.text())
+            textlist.append('x_center= ' + self.ui.editx_center.text())
+            textlist.append('length_z= ' + self.ui.editlength_z.text())
+            textlist.append('y_center= ' + self.ui.edity_center.text())
+            textlist.append('exp_region= ' + self.ui.editexp_region.text())
+            textlist.append('z_center= ' + self.ui.editz_center.text())
+            textlist.append('filetype= ' + self.ui.editfiletype.text())
+            textlist.append('d_region= ' + self.ui.editd_region.text())
+            textlist.append('aexp_ini= ' + self.ui.editaexp_ini.text())
+            textlist.append('u_region= ' + self.ui.editu_region.text())
+            textlist.append('multiple= ' + self.ui.editmultiple.text())
+            textlist.append('w_region= ' + self.ui.editw_region.text())
+            textlist.append('initfile= ' +self.ui.editinitfile.text())
+            textlist.append('p_region= ' +self.ui.editp_region.text())
+
+            for line in textlist:
+                print >>fp,line
+            #fp.close()
+            self.dialog.close()
+                
+        else:
+            pass
+            
+    def resetting(self):
+        choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna reset?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        
+        if (choice == QtGui.QMessageBox.Yes):
+            
+            self.ui.editnregion.clear()
+            self.ui.editlength_x.clear()
+            self.ui.editregion_type.clear()
+            self.ui.editlength_y.clear()
+            self.ui.editx_center.clear()
+            self.ui.editlength_z.clear()
+            self.ui.edity_center.clear()
+            self.ui.editexp_region.clear()
+            self.ui.editz_center.clear()
+            self.ui.editfiletype.clear()
+            self.ui.editd_region.clear()
+            self.ui.editaexp_ini.clear()
+            self.ui.editu_region.clear()
+            self.ui.editmultiple.clear()
+            self.ui.editw_region.clear()
+            self.ui.editinitfile.clear()
+            self.ui.editp_region.clear()
+            
+        else :
+            pass
+
+
+
+    
+
         
 class OutputPopupDialog(QtGui.QDialog):
     def __init__(self, parent=None):
         super(QtGui.QDialog,self).__init__()
         self.setGeometry(150,150,600,500)
 
-        self.dialog = QtGui.QFrame()
-        ui = Forms.Output_Frame()
-        ui.setupUi(self.dialog)
+        self.dialog = QtGui.QDialog()
+        self.ui = Forms.Output_Dialog()
+        self.ui.setupUi(self.dialog)
+
+        self.ui.Save.clicked.connect(self.saving)
+        self.ui.Reset.clicked.connect(self.resetting)
         self.dialog.show()
         
+
+    
+    def saving(self):
+        choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna save?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        if (choice == QtGui.QMessageBox.Yes):
+            print "Saving OUT Parameters"
+            textlist = []
+            textlist.append('&OUT_PARAMS')
+            textlist.append(self.ui.edittend.text())
+            textlist.append(self.ui.editnoutput.text())
+            textlist.append(self.ui.editdelta_tout_2.text())
+            textlist.append(self.ui.edittout.text())
+            textlist.append(self.ui.editaend.text())
+            textlist.append(self.ui.editdelta_tout.text())
+            textlist.append(self.ui.editfoutput.text())
+
+            for line in textlist:
+                print >>fp,line
+            #fp.close()
+            self.dialog.close()
+                
+        else:
+            pass
+            
+    def resetting(self):
+        choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna reset?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        
+        if (choice == QtGui.QMessageBox.Yes):
+            self.ui.edittend.clear()
+            self.ui.editnoutput.clear()
+            self.ui.editdelta_tout_2.clear()
+            self.ui.edittout.clear()
+            self.ui.editaend.clear()
+            self.ui.editdelta_tout.clear()
+            self.ui.editfoutput.clear()
+
+        else :
+            pass
+
+
 
 class BoundaryPopupDialog(QtGui.QDialog):
     def __init__(self, parent=None):
         super(QtGui.QDialog,self).__init__()
         self.setGeometry(150,150,600,500)
 
-        self.dialog = QtGui.QFrame()
-        ui = Forms.Boundary_Frame()
-        ui.setupUi(self.dialog)
+        self.dialog = QtGui.QDialog()
+        self.ui = Forms.Boundary_Dialog()
+        self.ui.setupUi(self.dialog)
+        self.ui.Save.clicked.connect(self.saving)
+        self.ui.Reset.clicked.connect(self.resetting)
+
         self.dialog.show()
         
+          
+    def saving(self):
+        choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna save?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        if (choice == QtGui.QMessageBox.Yes):
+            print "Saving BOUNDARY Parameters"
+            textlist = []
+            textlist.append('&BOUNDARY_PARAMS')
+            textlist.append('nboundary= '  + self.ui.editnboundary.text())
+            textlist.append('ibound_min= ' + self.ui.editibound_min.text())
+            textlist.append('bound_type= ' + self.ui.editbound_type.text())
+            textlist.append('jbound_min= ' + self.ui.editjbound_min.text())
+            textlist.append('d_bound= ' + self.ui.editd_bound.text())
+            textlist.append('kbound_min= ' + self.ui.editkbound_min.text())
+            textlist.append('u_bound= '  + self.ui.editu_bound.text())
+            textlist.append('ibound_max= ' + self.ui.editibound_max.text())
+            textlist.append('v_bound= '  + self.ui.editv_bound.text())
+            textlist.append('jbound_max= ' + self.ui.editjbound_max.text())
+            textlist.append('w_bound= '  + self.ui.editw_bound.text())
+            textlist.append('kbound_max= '  + self.ui.editkbound_max.text())
+            textlist.append('p_bound= '  + self.ui.editp_bound.text())
+            
+
+            for line in textlist:
+                print >>fp,line
+            #fp.close()
+            self.dialog.close()
+                
+        else:
+            pass
+            
+    def resetting(self):
+        choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna reset?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        
+        if (choice == QtGui.QMessageBox.Yes):
+            self.ui.editnboundary.clear()
+            self.ui.editibound_min.clear()
+            self.ui.editbound_type.clear()
+            self.ui.editjbound_min.clear()
+            self.ui.editd_bound.clear()
+            self.ui.editkbound_min.clear()
+            self.ui.editu_bound.clear()
+            self.ui.editibound_max.clear()
+            self.ui.editv_bound.clear()
+            self.ui.editjbound_max.clear()
+            self.ui.editw_bound.clear()
+            self.ui.editkbound_max.clear()
+            self.ui.editp_bound.clear()
+            
+        else :
+            pass
+
+
+
 
 class GlobalPopupDialog(QtGui.QDialog):
     def __init__(self, parent=None):
         super(QtGui.QDialog,self).__init__()
         self.setGeometry(150,150,600,500)
 
-        self.dialog = QtGui.QFrame()
-        ui = Forms.Global_Frame()
-        ui.setupUi(self.dialog)
+        self.dialog = QtGui.QDialog()
+        self.ui = Forms.Global_Dialog()
+        self.ui.setupUi(self.dialog)
+        self.ui.Save.clicked.connect(self.saving)
+        self.ui.Reset.clicked.connect(self.resetting)
+
         self.dialog.show()
         
+    def saving(self):
+        choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna save?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        if (choice == QtGui.QMessageBox.Yes):
+            print "Saving RUN Parameters"
+            textlist = []
+            textlist.append('&RUN_PARAMS')
+            textlist.append('hydro= '  + self.ui.edithydro.text())
+            textlist.append('nrestart= ' + self.ui.editnrestart.text())
+            textlist.append('nstepmax= '  + self.ui.editnstepmax.text())
+            textlist.append('cosmo= '  + self.ui.editcosmo.text())
+            textlist.append('nremap= '  + self.ui.editnremap.text())
+            textlist.append('pic= '  + self.ui.editpic.text())
+            textlist.append('poisson= '  + self.ui.editpoisson.text())
+            textlist.append('ncontrol= ' + self.ui.editncontrol.text())
+            textlist.append('nsubcycle= ' + self.ui.editnsubcycle.text())
+            textlist.append('verbose= ' + self.ui.editverbose.text())
+            textlist.append('ordering= ' + self.ui.editordering.text())
+            
+
+            for line in textlist:
+                print >>fp,line
+            #fp.close()
+            self.dialog.close()
+                
+        else:
+            pass
+            
+    def resetting(self):
+        choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna reset?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        if (choice == QtGui.QMessageBox.Yes):
+            self.ui.edithydro.clear()
+            self.ui.editnrestart.clear()
+            self.ui.editnstepmax.clear()
+            self.ui.editcosmo.clear()
+            self.ui.editnremap.clear()
+            self.ui.editpic.clear()
+            self.ui.editpoisson.clear()
+            self.ui.editncontrol.clear()
+            self.ui.editnsubcycle.clear()
+            self.ui.editverbose.clear()
+            self.ui.editordering.clear()
+            
+        else :
+            pass
+
+
+
 
 class HydroPopupDialog(QtGui.QDialog):
     def __init__(self, parent=None):
         super(QtGui.QDialog,self).__init__()
         self.setGeometry(150,150,600,500)
-
-        self.dialog = QtGui.QFrame()
-        ui = Forms.Hydro_Frame()
-        ui.setupUi(self.dialog)
+        self.dialog = QtGui.QDialog()
+        self.ui = Forms.Hydro_Dialog()
+        self.ui.setupUi(self.dialog)
+        self.ui.Save.clicked.connect(self.saving)
+        self.ui.Reset.clicked.connect(self.resetting)
         self.dialog.show()
+
+    def saving(self):
+        choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna save?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        if (choice == QtGui.QMessageBox.Yes):
+            print "Saving HYDRO Parameters"
+            textlist = []
+            textlist.append('&HYDRO_PARAMS')
+            textlist.append('smallc= ' + self.ui.editsmallc.text())
+            textlist.append('riemann2d= ' + self.ui.editriemann2d.text())
+            textlist.append('gamma= ' + self.ui.editgamma.text())
+            textlist.append('slope_type= ' + self.ui.editslope_type.text())
+            textlist.append('courant_factor= ' + self.ui.editcourant_factor.text())
+            textlist.append('smallr= ' + self.ui.editsmallr.text())
+            textlist.append('niter_riemann= ' + self.ui.editniter_riemann.text())
+            textlist.append('riemann= ' + self.ui.editriemann.text())
+            textlist.append('pressure_fix= ' + self.ui.editpressure_fix.text()) 
+            
+            for line in textlist:
+                print >>fp,line
+            #fp.close()
+            self.dialog.close()
+                
+        else:
+            pass
+            
+    def resetting(self):
+        choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna reset?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        if (choice == QtGui.QMessageBox.Yes):
+
+            self.ui.editsmallc.clean()
+            self.ui.editriemann2d.clean()
+            self.ui.editgamma.clean()
+            self.ui.editslope_type.clean()
+            self.ui.editcourant_factor.clean()
+            self.ui.editsmallr.clean()
+            self.ui.editniter_riemann.clean()
+            self.ui.editriemann.clean()
+            self.ui.editpressure_fix.clean() 
+            
+        else :
+            pass
+
+
         
 class RefinePopupDialog(QtGui.QDialog):
     def __init__(self, parent=None):
         super(QtGui.QDialog,self).__init__()
         self.setGeometry(150,150,600,500)
 
-        self.dialog = QtGui.QFrame()
-        ui = Forms.Refine_Frame()
-        ui.setupUi(self.dialog)
+        self.dialog = QtGui.QDialog()
+        self.ui = Forms.Refine_Dialog()
+        self.ui.setupUi(self.dialog)
+        self.ui.Save.clicked.connect(self.saving)
+        self.ui.Reset.clicked.connect(self.resetting)
         self.dialog.show()
+
+
+    def saving(self):
+        choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna save?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        if (choice == QtGui.QMessageBox.Yes):
+            print "Saving REFINE Parameters"
+            textlist = []
+            textlist.append('&REFINE_PARAMS')
+            textlist.append('mass_sph= '  + self.ui.editmass_sph.text())
+            textlist.append('floor_d= '  + self.ui.editfloor_d.text())
+            textlist.append('err_grad_d= '  + self.ui.editerr_grad_d.text())
+            textlist.append('m_refine= '  + self.ui.editm_refine.text())
+            textlist.append('floor_u= '  + self.ui.editfloor_u.text())
+            textlist.append('err_grad_u= '  + self.ui.editerr_grad_u.text())
+            textlist.append('jeans_refine= '  + self.ui.editjeans_refine.text())
+            textlist.append('floor_p= '  + self.ui.editfloor_p.text())
+            textlist.append('err_grad_p= ' + self.ui.editerr_grad_p.text())
+            textlist.append('x_refine= '  + self.ui.editx_refine.text())
+            textlist.append('r_refine= '  + self.ui.editr_refine.text())
+            textlist.append('exp_refine= '  + self.ui.editexp_refine.text())
+            textlist.append('y_refine= '  + self.ui.edity_refine.text())
+            textlist.append('a_refine_2= '  + self.ui.edita_refine_2.text())
+            textlist.append('interpol_var= '  + self.ui.editinterpol_var.text())
+            textlist.append('z_refine= '  + self.ui.editz_refine.text())
+            textlist.append('b_refine= '  + self.ui.editb_refine.text())
+            textlist.append('interpol_type= '  + self.ui.editinterpol_type.text())
+
+            for line in textlist:
+                print >>fp,line
+            #fp.close()
+            self.dialog.close()
+                
+        else:
+            pass
+            
+    def resetting(self):
+        choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna reset?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        if (choice == QtGui.QMessageBox.Yes):
+
+             self.ui.editmass_sph.clear()
+             self.ui.editfloor_d.clear()
+             self.ui.editerr_grad_d.clear()
+             self.ui.editm_refine.clear()
+             self.ui.editfloor_u.clear()
+             self.ui.editerr_grad_u.clear()
+             self.ui.editjeans_refine.clear()
+             self.ui.editfloor_p.clear()
+             self.ui.editerr_grad_p.clear()
+             self.ui.editx_refine.clear()
+             self.ui.editr_refine.clear()
+             self.ui.editexp_refine.clear()
+             self.ui.edity_refine.clear()
+             self.ui.edita_refine_2.clear()
+             self.ui.editinterpol_var.clear()
+             self.ui.editz_refine.clear()
+             self.ui.editb_refine.clear()
+             self.ui.editinterpol_type.clear()
+             
+    
+        else :
+            pass
+
+
+
         
 class PoissonPopupDialog(QtGui.QDialog):
     def __init__(self, parent=None):
         super(QtGui.QDialog,self).__init__()
         self.setGeometry(150,150,600,500)
 
-        self.dialog = QtGui.QFrame()
-        ui = Forms.Poisson_Frame()
-        ui.setupUi(self.dialog)
+        self.dialog = QtGui.Dialog()
+        self.ui = Forms.Poisson_Dialog()
+        self.ui.setupUi(self.dialog)
+        self.ui.Save.clicked.connect(self.saving)
+        self.ui.Reset.clicked.connect(self.resetting)
         self.dialog.show()
+
+    def saving(self):
+        choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna save?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        if (choice == QtGui.QMessageBox.Yes):
+            print "Saving POISSON Parameters"
+            textlist = []
+            textlist.append('&POISSON_PARAMS')
+            textlist.append('gravity_type= '  + self.ui.editgravity_type.text())
+            textlist.append('cg_levelmin= '  + self.ui.editcg_levelmin.text())
+            textlist.append('epsilon= '  + self.ui.editepsilon.text())
+            textlist.append('cic_levelmax= '  + self.ui.editcic_levelmax.text())
+            textlist.append('gravity_params= '  + self.ui.editgravity_params.text())
+            
+            for line in textlist:
+                print >>fp,line
+            #fp.close()
+            self.dialog.close()
+                
+        else:
+            pass
+            
+    def resetting(self):
+        choice = QtGui.QMessageBox.question(self,'extract!!',"Do you wanna reset?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        if (choice == QtGui.QMessageBox.Yes):
+
+            self.ui.editgravity_type.clear()
+            self.ui.editcg_levelmin.clear()
+            self.ui.editepsilon.clear()
+            self.ui.editcic_levelmax.clear()
+            self.ui.editgravity_params.clear()
+            
+        else :
+            pass
+
         
 
 
