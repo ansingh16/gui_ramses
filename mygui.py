@@ -65,7 +65,7 @@ class Window(QtGui.QMainWindow):
 
         fontChoice = QtGui.QAction('Font',self)
         fontChoice.triggered.connect(self.font_choice)
-        #self.toolBar = self.addToolBar("Fonts")
+        self.toolBar = self.addToolBar("Fonts")
         self.toolBar.addAction(fontChoice)
         
         

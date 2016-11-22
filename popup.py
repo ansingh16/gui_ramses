@@ -68,7 +68,7 @@ class PhyPopupDialog(QtGui.QDialog):
             for line in textlist:
                 print >>fp,line
             #fp.close()
-            self.dialog.close()
+            self.dialog.accept()
                 
         else:
             pass
@@ -135,7 +135,7 @@ class AMRPopupDialog(QtGui.QDialog):
             for line in textlist:
                 print >>fp,line
             #fp.close()
-            self.dialog.close()
+            self.dialog.accept()
                 
         else:
             pass
@@ -198,7 +198,7 @@ class InitPopupDialog(QtGui.QDialog):
             for line in textlist:
                 print >>fp,line
             #fp.close()
-            self.dialog.close()
+            self.dialog.accept()
                 
         else:
             pass
@@ -266,7 +266,7 @@ class OutputPopupDialog(QtGui.QDialog):
             for line in textlist:
                 print >>fp,line
             #fp.close()
-            self.dialog.close()
+            self.dialog.accept()
                 
         else:
             pass
@@ -326,7 +326,7 @@ class BoundaryPopupDialog(QtGui.QDialog):
             for line in textlist:
                 print >>fp,line
             #fp.close()
-            self.dialog.close()
+            self.dialog.accept()
                 
         else:
             pass
@@ -390,7 +390,7 @@ class GlobalPopupDialog(QtGui.QDialog):
             for line in textlist:
                 print >>fp,line
             #fp.close()
-            self.dialog.close()
+            self.dialog.accept()
                 
         else:
             pass
@@ -446,7 +446,7 @@ class HydroPopupDialog(QtGui.QDialog):
             for line in textlist:
                 print >>fp,line
             #fp.close()
-            self.dialog.close()
+            self.dialog.accept()
                 
         else:
             pass
@@ -511,7 +511,7 @@ class RefinePopupDialog(QtGui.QDialog):
             for line in textlist:
                 print >>fp,line
             #fp.close()
-            self.dialog.close()
+            self.dialog.accept()
                 
         else:
             pass
@@ -551,7 +551,7 @@ class PoissonPopupDialog(QtGui.QDialog):
         super(QtGui.QDialog,self).__init__()
         self.setGeometry(150,150,600,500)
 
-        self.dialog = QtGui.Dialog()
+        self.dialog = QtGui.QDialog()
         self.ui = Forms.Poisson_Dialog()
         self.ui.setupUi(self.dialog)
         self.ui.Save.clicked.connect(self.saving)
@@ -573,7 +573,7 @@ class PoissonPopupDialog(QtGui.QDialog):
             for line in textlist:
                 print >>fp,line
             #fp.close()
-            self.dialog.close()
+            self.dialog.accept()
                 
         else:
             pass
