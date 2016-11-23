@@ -15,6 +15,8 @@ import sys
 import Forms
 import popup 
 
+from subprocess import call
+
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -38,8 +40,11 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(869, 603)
-        #icon = QtGui.QIcon()
-        #icon.addPixmap(QtGui.QPixmap(_fromUtf8("result.jpg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("FreeMono"))
+        font.setBold(True)
+
+
 
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
@@ -49,6 +54,13 @@ class Ui_MainWindow(object):
         self.gridLayout = QtGui.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         
+        #Directory choosing buttons
+        self.ChooseFileBin = QtGui.QPushButton(self.centralwidget)
+        self.ChooseFileBin.setObjectName(_fromUtf8("ChooseFileBin"))
+        self.ChooseNameFile = QtGui.QPushButton(self.centralwidget)
+        self.ChooseNameFile.setObjectName(_fromUtf8("ChooseNameFile"))
+
+
 
 
         self.EditGlobal = QtGui.QRadioButton(self.centralwidget)
@@ -60,6 +72,9 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.EditGlobal, 0, 0, 1, 1)
         self.Global = QtGui.QLabel(self.centralwidget)
         self.Global.setObjectName(_fromUtf8("Global"))
+    
+
+
         self.gridLayout.addWidget(self.Global, 0, 1, 1, 1)
 
         self.EditPoisson = QtGui.QRadioButton(self.centralwidget)
@@ -126,8 +141,7 @@ class Ui_MainWindow(object):
         self.BinFileInput = QtGui.QLineEdit(self.centralwidget)
         self.BinFileInput.setObjectName(_fromUtf8("BinFileInput"))
         self.gridLayout.addWidget(self.BinFileInput, 4, 4, 1, 1)
-        self.ChooseFileBin = QtGui.QPushButton(self.centralwidget)
-        self.ChooseFileBin.setObjectName(_fromUtf8("ChooseFileBin"))
+       
         self.gridLayout.addWidget(self.ChooseFileBin, 4, 5, 1, 1)
 
         self.EditBound = QtGui.QRadioButton(self.centralwidget)
@@ -143,8 +157,7 @@ class Ui_MainWindow(object):
         self.NamefileInput = QtGui.QLineEdit(self.centralwidget)
         self.NamefileInput.setObjectName(_fromUtf8("NamefileInput"))
         self.gridLayout.addWidget(self.NamefileInput, 5, 4, 1, 1)
-        self.ChooseNameFile = QtGui.QPushButton(self.centralwidget)
-        self.ChooseNameFile.setObjectName(_fromUtf8("ChooseNameFile"))
+       
         self.gridLayout.addWidget(self.ChooseNameFile, 5, 5, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
@@ -172,29 +185,39 @@ class Ui_MainWindow(object):
         self.actionQUICKVIEW = QtGui.QAction( QtGui.QIcon('ramses.jpg'),'Have a quick view',MainWindow)
         self.actionQUICKVIEW.setObjectName(_fromUtf8("QUICKVIEW"))
        
-        self.actionQUICKVIEW.triggered.connect(self.some)
+        self.actionQUICKVIEW.triggered.connect(self.AMRVIEWER)
         self.toolBar = MainWindow.addToolBar("QuickView")
         self.toolBar.addAction(self.actionQUICKVIEW)
         
+        #ADDING YT BUTTON
+
+        self.actionYT = QtGui.QAction( QtGui.QIcon('yt.png'),'Analysis using yt',MainWindow)
+        self.actionYT.setObjectName(_fromUtf8("YT"))
+       
+        self.actionYT.triggered.connect(self.YT_ANA)
+        self.toolBar = MainWindow.addToolBar("YT")
+        self.toolBar.addAction(self.actionYT)
+        
+
 
         #editing for a pop-up menu
         
         self.EditPhy.toggled.connect(self.Phys_pop)
-        
-
         self.EditAMR.toggled.connect(self.AMR_pop)
         self.EditInit.toggled.connect(self.Init_pop)
         self.EditOut.toggled.connect(self.Out_pop)
         self.EditBound.toggled.connect(self.Boundary_pop)
-
         self.EditGlobal.toggled.connect(self.Global_pop)
-
         self.EditHydro.toggled.connect(self.Hydro_pop)
         self.EditRefine.toggled.connect(self.Refine_pop)
         self.EditPoisson.toggled.connect(self.Poisson_pop)
 
+        
+        #editing for collecting namelist directories and bin directories
 
 
+        self.ChooseFileBin.clicked.connect(self.ChooseBinDir)
+        self.ChooseNameFile.clicked.connect(self.ChooseNameDir)
         
 
         self.retranslateUi(MainWindow)
@@ -235,7 +258,7 @@ class Ui_MainWindow(object):
         self.Namelist.setText(_translate("MainWindow", "Namelist Directory", None))
         self.ChooseNameFile.setText(_translate("MainWindow", "File", None))
         self.menuFile.setTitle(_translate("MainWindow", "File", None))
-        self.actionEdit.setText(_translate("MainWindow", "Edir", None))
+        self.actionEdit.setText(_translate("MainWindow", "Edit", None))
         self.actionQuit.setText(_translate("MainWindow", "Quit", None))
         self.actionQuit.setShortcut(_translate("MainWindow", "Ctrl+Q", None))
         self.actionSave.setText(_translate("MainWindow", "Save", None))
@@ -290,12 +313,27 @@ class Ui_MainWindow(object):
         self.EditPoisson.setStyleSheet("background-color: green")
         self.dialog = popup.PoissonPopupDialog()
     
+
+    #functions for choosing directories
     
-    def some(self):
-        print "M here"
+    def ChooseBinDir(self):
+        name = str(QFileDialog.getExistingDirectory(self.centralwidget, "Select Directory"))
+        self.BinFileInput.setText(name)
+    def ChooseNameDir(self):
+        name = str(QFileDialog.getExistingDirectory(self.centralwidget, "Select Directory"))
+        self.NamefileInput.setText(name)
 
+    #functions for analysis
 
-  
+    def YT_ANA(self):
+        self.dialog = popup.YTpopup()
+
+    
+    def AMRVIEWER(self):
+        from pymses.analysis.visualization import AMRViewer
+        AMRViewer.run()
+        
+
     
     
 if __name__ == "__main__":
@@ -303,12 +341,7 @@ if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
     MainWindow = QtGui.QMainWindow()
     ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    """
-    palette = QtGui.QPalette()
-    palette.setBrush(QPalette.Background,QBrush(QPixmap("result.jpg")))
-    MainWindow.setPalette(palette)
-    """
+   
    # MainWindow.setStyleSheet(" background-image: url(./result.jpg);")
 
    

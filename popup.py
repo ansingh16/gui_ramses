@@ -2,7 +2,7 @@ from PyQt4 import QtCore, QtGui
 from PyQt4.QtGui import QImage
 import Forms
 import sys
-
+import YT_Dialog
 
 fp = open('RAMSES_GUI.nml','w')
 
@@ -594,4 +594,13 @@ class PoissonPopupDialog(QtGui.QDialog):
         
 
 
+class YTpopup(QtGui.QDialog):
+    def __init__(self, parent=None):
+        super(QtGui.QDialog,self).__init__()
+        self.setGeometry(150,150,784,621)
 
+        self.dialog = QtGui.QDialog()
+        self.ui = YT_Dialog(self.dialog)
+        self.ui.setupUi(self.dialog)
+
+        self.dialog.show()
